@@ -194,7 +194,6 @@ public class HelloFX extends Application {
             }
             ImageIO.write(paintingFile, "png", new File(paintingPath));
         } catch (IOException e) {
-            log.error("an unexpected error has occurred", e);
             return false;
         }
         return true;
@@ -229,7 +228,6 @@ public class HelloFX extends Application {
                 textToDec = (char)(colorModel & 0xFF) + textToDec;
             }
         } catch (IOException e){
-            log.error("an unexpected error has occurred", e);
             return false;
         }
         return true;
