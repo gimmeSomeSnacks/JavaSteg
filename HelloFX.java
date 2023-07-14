@@ -25,29 +25,29 @@ public class HelloFX extends Application {
     @Override
     public void start (Stage primaryStage) {
 
-        primaryStage.setTitle("Криптография момент"); //наименование окна
+        primaryStage.setTitle("Cryptography");
 
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 0, 0, 50));
 
-        RadioButton Enc = new RadioButton("Шифрование");
+        RadioButton Enc = new RadioButton("Encryption");
         grid.add(Enc, 0, 0);
-        RadioButton Dec = new RadioButton("Дешифрование");
+        RadioButton Dec = new RadioButton("Decryption");
         grid.add(Dec, 0, 1);
         ToggleGroup Chose = new ToggleGroup();
         Enc.setToggleGroup(Chose);
         Dec.setToggleGroup(Chose);
 
-        Button openFolderButton = new Button("Открыть изображение");
+        Button openFolderButton = new Button("Open file");
         HBox openButton = new HBox(10);
         openButton.setAlignment(Pos.BOTTOM_LEFT);
         openButton.getChildren().add(openFolderButton);
         grid.add(openButton, 0, 2);
         openFolderButton.setVisible(false);
 
-        Button confirmButton = new Button("Начать");
+        Button confirmButton = new Button("Ready");
         HBox confButton = new HBox(10);
         confButton.setAlignment(Pos.BOTTOM_LEFT);
         confButton.getChildren().add(confirmButton);
@@ -76,16 +76,16 @@ public class HelloFX extends Application {
             imageShow.setImage(image);
             confButton.setVisible(true);
         });
-        Label textText = new Label("Введите текст:");
+        Label textText = new Label("Text:");
         grid.add(textText, 1, 0);
         TextField textEnc = new TextField();
         grid.add(textEnc, 1, 1);
         textText.setVisible(false);
         textEnc.setVisible(false);
 
-        Label textElemnts = new Label("Введите количество символов:"); //текст
+        Label textElemnts = new Label("Number of characters :");
         grid.add(textElemnts, 1, 0);
-        TextField simbsDec = new TextField(); //поле заполнение
+        TextField simbsDec = new TextField();
         grid.add(simbsDec, 1, 1);
         textElemnts.setVisible(false);
         simbsDec.setVisible(false);
@@ -101,14 +101,14 @@ public class HelloFX extends Application {
             if (Chose.getSelectedToggle() == Enc) {
                 textToEnc = textEnc.getText();
                 elementCount = textToEnc.length();
-                numberElements.setText("Количество символов " + elementCount);
+                numberElements.setText("Number of characters " + elementCount);
                 if (elementCount == 0) {
                     numberElements.setFill(Color.RED);
                 } else {
                     if (paintingEncryption()) {
-                        textAction.setText("Успешно");
+                        textAction.setText("Done");
                     } else {
-                        textAction.setText("Возникла ошибка при переводе :(");
+                        textAction.setText("Some problems :(");
                     }
                 }
                 numberElements.setVisible(true);
@@ -117,11 +117,11 @@ public class HelloFX extends Application {
                 textAction.setVisible(false);
                 elementCount = Integer.parseInt(simbsDec.getText());
                 if (paintingDecryption()){
-                    textDec.setText("Получен текст: " + textToDec);
+                    textDec.setText("Text: " + textToDec);
                     textDec.setVisible(true);
                 }
                 else{
-                    textAction.setText("Возникла ошибка при переводе :(");
+                    textAction.setText("Some problems :(");
                     textAction.setVisible(true);
                 }
             }
@@ -240,43 +240,3 @@ public class HelloFX extends Application {
         launch(args);
     }
 }
-
-/*Label textEnc = new Label("Шифрование"); //текст
-grid.add(textEnc, 0, 0);
-
-Label textDec = new Label("Дешифрование"); //текст
-grid.add(textDec, 1, 0);*/
-
-//TextField userTextField = new TextField(); //поле заполнение
-//grid.add(userTextField, 1, 0);
-
-/*final Text actionOpen = new Text();
-grid.add(actionOpen, 0, 5);
-actionOpen.setFill(Color.BLACK);
-actionOpen.setText("Before:");*/
-
-/*Label text0 = new Label("Введите кол-во элементов:"); //текст
-grid.add(text0, 1, 0);
-TextField Code = new TextField(); //поле заполнение
-grid.add(Code, 1, 1);*/
-
-/*Button saveFolderButton = new Button("Сохранить изображение");
-HBox saveButton = new HBox(10);
-saveButton.setAlignment(Pos.BOTTOM_LEFT);
-saveButton.getChildren().add(saveFolderButton);
-grid.add(saveButton, 1, 5);
-saveFolderButton.setVisible(false);*/
-
-/*
-        log.debug("Start stage");
-
-        log.info("Start stage {}", a);
-
-        try {
-            throw new Exception("some error");
-        } catch (Exception e) {
-            log.error("an unexpected error has occurred", e);
-        }
-/**/
-
-//textAction.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
