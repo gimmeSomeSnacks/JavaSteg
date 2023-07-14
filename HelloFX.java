@@ -15,9 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class HelloFX extends Application {
-
-    private static final Logger log = LogManager.getLogger(HelloFX.class);
-
+    
     int elementCount;
     String textToEnc, paintingPath;
     String textToDec = "";
